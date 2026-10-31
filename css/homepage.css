@@ -11,6 +11,7 @@
     height: 100vh;
     border: 5px black solid;
     align-items: center;
+    background-color: #fff6e3;
 }
 
 .header {
@@ -18,18 +19,33 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 3px rgb(248, 2, 2) solid;
+    border: 3px rgb(248, 2, 2, 0.2) solid;
 }
 
 .main{
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #ffcf5c;
+    border-radius: 20px;
+    border: 4px rgb(255, 176, 56) ridge;
+    box-shadow: 0px 12px #e8a92a, 0 10px 0 6px #3b2a4a;
+    margin-bottom: 20px;
+}
+
+.card-container {
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: 200px 200px 200px;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 220px 220px 220px;
     gap: 1em;
     grid-template-areas: 
     "box-1 box-2 box-2"
     "box-1 box-3 box-4"
     "box-5 box-5 box-5";
+
+    padding: 10px;
+    background-color: #fff6e3;
+    border-radius: 30px;
+    border: 4px rgb(255, 176, 56) inset;
 }
 
 .card {
@@ -37,34 +53,112 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: blue;
+    border-radius: 20px;
     
 }
 
 #reading{
-    background-color: yellow;
+    background-color: #fdf669;
+    overflow: hidden;
+    border: 4px black solid;
 }
 
 #math{
-    background-color: rgb(0, 110, 255);
+    background-color: rgb(68, 149, 255);
+    overflow: hidden;
+    border: 4px black solid;
 }
 
 #profile{
-    background-color: beige;
+    background-color: #fdd599;
+    overflow: hidden;
+    border: 4px black solid;
+
+}
+
+#profile h2{
+    font-size: 1rem;
 
 }
 
 #store{
-   background-color: burlywood;
+   background-color: rgb(202, 243, 136); /* Change color ko toh */
+   overflow: hidden;
+   border: 4px black solid;
 }
 
 #event{
+    display: flex;
+    flex-direction: row;
     background-color: red;
+    overflow: hidden;
+    justify-content: space-around;
+    border: 4px black solid;
 }
 
-.sub-card {
+/* .sub-card {
     width: 10rem;
     height: 20rem;
     border: 3px rgb(58, 119, 0) solid;
     background-color: rgb(250, 250, 141);
+}
+/* Change to IDs pre */
+
+#sub-card1 {
+    display: flex;
+    width: 10rem;
+    height: 10rem;
+    margin: 5px;
+    border: 3px #b6b6b6 solid;
+    background-color: #ffffff;
+}
+
+#sub-card2 {
+    display: flex;
+    width: 10rem;
+    height: 10rem;
+    margin: 5px;
+    border: 3px #b6b6b6 solid;
+    background-color: #ffffff;
+}
+
+#sub-card3{
+    display: flex;
+    width: 10rem;
+    height: 10rem;
+    margin: 5px;
+    border: 3px #b6b6b6 solid;
+    background-color: #ffffff;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+#sub-card3 img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+}
+#sub-card4 {
+    display: flex;
+    width: 14rem;
+    height: 8rem;
+    margin: 5px;
+    border: 3px rgb(155, 223, 109) solid;
+    background-color: rgb(168, 231, 108);
+    
+}
+
+#sub-card5 {
+    display: flex;
+    width: 19rem;
+    height: 8rem;
+    margin: 5px;
+    border: 3px rgb(219, 2, 2) solid;
+    background-color: rgb(233, 2, 2);
+}
+
+.card-description {
+    display: flex;
+    flex-direction: column;
 }

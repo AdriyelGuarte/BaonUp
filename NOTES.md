@@ -10,7 +10,7 @@ Adz: state.js (save/load), question JSON format
 
 Thu Oct 29	
 Level picker pop-up + profile card	
-Reading v1: picture→word, 🔊 TTS, progress bar, 2 tries
+Reading v1: picture→word, , progress bar, 2 tries
 
 Fri Oct 30	
 Tindahan (siguro 6–8 items, buy logic)	
@@ -31,7 +31,7 @@ Badges + profile polish
 Match-the-meaning + conversation-with-blanks quizzes
 
 Wed Nov 4	
-Reading question bank (Eng/Tagalog/GenZ)	
+Reading question bank (Eng/Tagalog)	
 Speech-to-text (Web Speech API) + fallback buttons // maangaz toh boss
 
 Thu Nov 5	
