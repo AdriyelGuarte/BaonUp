@@ -1,3 +1,24 @@
+.baloo-2-bold {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.baloo-2-medium {
+font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.baloo-2-regular {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 *{
     padding: 0px;
     margin: 0px;
@@ -16,10 +37,28 @@
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     border: 3px rgb(248, 2, 2, 0.2) solid;
+    background-color: rgba(248, 113, 2, 0.2);
+}
+
+.header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+
+.header h1 {
+    font-family: "Baloo 2";
+    font-weight: 800;
+}
+
+.header h3 {
+    font-family: "Baloo 2";
+    font-weight: 400;
 }
 
 .main{
@@ -28,7 +67,7 @@
     background-color: #ffcf5c;
     border-radius: 20px;
     border: 4px rgb(255, 176, 56) ridge;
-    box-shadow: 0px 12px #e8a92a, 0 10px 0 6px #3b2a4a;
+    box-shadow: 0px 13px #e8a92a, 0 12px 0 10px #3b2a4a;
     margin-bottom: 20px;
 }
 
@@ -61,30 +100,56 @@
     background-color: #fdf669;
     overflow: hidden;
     border: 4px black solid;
+    transition: transform 0.2s ease;
 }
 
 #math{
     background-color: rgb(68, 149, 255);
     overflow: hidden;
     border: 4px black solid;
+    transition: transform 0.2s ease;
 }
 
 #profile{
-    background-color: #fdd599;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
     overflow: hidden;
-    border: 4px black solid;
+    border: 4px #3b2a4a solid;
+    justify-content: space-around;
+    transition: transform 0.2s ease;
+}
 
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px 0px 0px 20px;
+    gap: 5px;
+    /* border: 0.5px black solid; */
+    color: #3b2a4a; /* ink for text */
+}
+
+#profile h1 {
+    font-family: "Baloo 2";
+    font-weight: 600;
+    line-height: 1;
 }
 
 #profile h2{
-    font-size: 1rem;
+    font-family: "Baloo 2";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1; /* forces the box to match the text height */
 
 }
 
+
 #store{
-   background-color: rgb(202, 243, 136); /* Change color ko toh */
+   background-color: rgb(255, 213, 150); /* Change color ko toh */
    overflow: hidden;
    border: 4px black solid;
+   transition: transform 0.2s ease;
 }
 
 #event{
@@ -94,8 +159,14 @@
     overflow: hidden;
     justify-content: space-around;
     border: 4px black solid;
+    transition: transform 0.2s ease;
 }
 
+#reading:hover { transform: translate(-4px, -6px) rotate(-2deg); }
+#math:hover    { transform: translate( 4px, -6px) rotate( 0.5deg); }
+#profile:hover   { transform: translate(-4px, -6px) rotate(-2deg); }
+#store:hover { transform: translate( 4px, -6px) rotate( 2deg); }
+#event:hover {transform :translate(-4px, -6px) rotate(-0.5deg);}
 /* .sub-card {
     width: 10rem;
     height: 20rem;
@@ -124,19 +195,20 @@
 
 #sub-card3{
     display: flex;
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     margin: 5px;
-    border: 3px #b6b6b6 solid;
+    border: 7px #000000 solid;
     background-color: #ffffff;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 0px 0px 3px gray;
 }
 
 #sub-card3 img{
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
 }
 #sub-card4 {
@@ -144,8 +216,8 @@
     width: 14rem;
     height: 8rem;
     margin: 5px;
-    border: 3px rgb(155, 223, 109) solid;
-    background-color: rgb(168, 231, 108);
+    border: 3px rgb(255, 182, 98) solid;
+    background-color: rgb(255, 196, 85);
     
 }
 
