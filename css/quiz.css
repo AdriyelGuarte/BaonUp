@@ -1,0 +1,319 @@
+/* =========================================================
+   quiz.css — the conversational quiz screen
+   (teacher bubble left · child's bubble with blank right ·
+    4 choices · Check bar at the bottom)
+   ========================================================= */
+
+body.quiz {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 150px;           /* space for the fixed Check bar */
+}
+
+/* ---------- TOP BAR ---------- */
+.q-top {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  padding: 16px 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.q-close {
+  padding: 2px 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--ink);
+  background: none;
+  border: none;
+}
+.q-progress {
+  flex: 1;
+  height: 18px;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.q-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #7ed957, #3bb54a);
+  transition: width .4s ease;
+}
+.q-counter {
+  min-width: 52px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-align: right;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+/* ---------- STAGE ---------- */
+.q-stage {
+  width: min(780px, 100%);
+  margin: 22px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.q-tag {
+  align-self: flex-start;
+  padding: 3px 14px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: .85rem;
+  letter-spacing: 1px;
+  color: var(--gold);
+  background: var(--ink);
+  border-radius: 999px;
+}
+
+/*  CHAT  */
+.chat { display: flex; flex-direction: column; gap: 16px; }
+.msg { display: flex; align-items: flex-end; gap: 12px; }
+.msg-me { justify-content: flex-end; }
+
+.teacher {
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  background: #ffe6bd;
+  border: 4px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 0 4px 0 rgba(59, 42, 74, .3);
+}
+.teacher img { object-fit: cover; object-position: 50% 22%; border-radius: 50%; }
+
+.bubble {
+  max-width: 82%;
+  padding: 12px 20px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 0 4px 0 rgba(59, 42, 74, .25);
+  animation: pop .25s ease;
+}
+.bubble-teacher { background: var(--white); border-bottom-left-radius: 6px; }
+.bubble-me { background: #ffbd2e; border-bottom-right-radius: 6px; }
+
+.blank {
+  display: inline-block;
+  min-width: 120px;
+  min-height: 1.3em;
+  margin: 0 4px;
+  text-align: center;
+  border-bottom: 3px solid var(--ink);
+  vertical-align: bottom;
+}
+.blank.filled { background: rgba(255, 255, 255, .55); border-radius: 8px 8px 0 0; }
+
+/* ---------- CHOICES (2 × 2) ---------- */
+.choices {
+  width: min(580px, 100%);
+  margin: 6px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.choice {
+  min-height: 78px;
+  padding: 14px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 4px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 0 6px 0 var(--ink);
+  transition: transform .1s ease, background .1s ease;
+}
+.choice:hover:not(:disabled) { transform: translateY(-3px); }
+.choice:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 3px 0 var(--ink); }
+.choice.selected { background: #bfe0ff; }
+.choice.correct { background: var(--green-soft); animation: bump .35s ease; }
+.choice.wrong { background: #ffb3b3; }
+.choice:disabled { cursor: default; }
+.choice.wrong:disabled { opacity: .75; }
+
+/* ---------- FOOTER / CHECK BAR ---------- */
+.q-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  padding: 18px 16px;
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border-top: 4px solid var(--ink);
+  transition: background .2s ease;
+}
+.q-footer.good { background: #d7ffb8; }
+.q-footer.bad  { background: #ffdede; }
+.q-footer.try  { background: #fff3c4; }
+
+.footer-inner {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.feedback { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; }
+.feedback .title { display: block; font-size: 1.6rem; line-height: 1.1; }
+.feedback .sub { display: block; font-family: var(--font-body); font-size: .95rem; font-weight: 700; }
+.q-footer.good .title { color: #2e8b2e; }
+.q-footer.bad .title { color: #c0392b; }
+.q-footer.try .title { color: #a87400; }
+
+.check { min-width: 150px; font-size: 1.3rem; }
+.check.ready { background: var(--green); color: var(--white); text-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
+.check.next { background: #4aa9ff; color: var(--white); text-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
+
+/* ---------- RESULTS ---------- */
+.results {
+  align-self: center;
+  width: min(520px, 100%);
+  margin-top: 8px;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  background: rgba(255, 255, 255, .94);
+  border: 5px solid var(--ink);
+  border-radius: 30px;
+  box-shadow: 0 8px 0 var(--ink);
+  animation: pop .3s ease;
+}
+.stars { font-size: 3.8rem; letter-spacing: 6px; }
+.stars .off { filter: grayscale(1) opacity(.3); }
+.results h2 { font-size: 2.2rem; }
+.results .summary { font-size: 1.15rem; }
+.results .rule { max-width: 38ch; font-size: .9rem; opacity: .7; }
+.results .festival-note { padding: 4px 14px; font-weight: 800; background: #ffe3a1; border-radius: 999px; }
+.results .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 6px; }
+
+/* ---------- SMALL SCREENS ---------- */
+@media (max-width: 560px) {
+  .teacher { width: 60px; height: 60px; font-size: 1.2rem; }
+  .bubble { font-size: 1.05rem; padding: 10px 14px; max-width: 78%; }
+  .blank { min-width: 84px; }
+  .choices { gap: 12px; }
+  .choice { min-height: 68px; font-size: 1.15rem; }
+  .q-footer { min-height: 100px; }
+  .check { min-width: 120px; padding: 10px 18px; }
+  .feedback .title { font-size: 1.3rem; }
+}
+
+/* ---------- Highlight game (full screen) ---------- */
+.bg-jungle { background: #0a1a12; }
+body.highlight { overflow: hidden; }
+body.highlight .q-top {
+  position: relative;
+  z-index: 5;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: rgba(10, 26, 18, .55);
+  border-radius: 999px;
+}
+body.highlight .q-counter { color: #fff; text-shadow: none; }
+body.highlight .q-close { color: #fff; }
+
+/* The board is as big as "cover" would make the image: it fills
+   the screen and the overflow is cropped. Text is positioned in %
+   of the board, so it stays on the cream area at any screen size. */
+.scene {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: max(100vw, calc(100vh * 1.415));
+  aspect-ratio: 2000 / 1413;
+  transform: translate(-50%, -50%);
+  background: url("../assets/images/board.png") center / 100% 100% no-repeat;
+  container-type: inline-size;
+  z-index: 0;
+}
+.scene-content {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 24%;
+  bottom: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1cqw;
+}
+.scene .bubble {
+  align-self: flex-start;
+  margin-left: 21%;
+  max-width: 58%;
+  padding: .8cqw 1.6cqw;
+  font-size: clamp(11px, 1.7cqw, 30px);
+  background: #ffc20e;
+  border-width: 2px;
+  box-shadow: none;
+}
+.word-big {
+  margin-top: auto;
+  font-size: clamp(24px, 5.2cqw, 96px);
+  letter-spacing: .2cqw;
+  line-height: 1;
+  color: #1fb21f;
+}
+.word-sentence {
+  font-weight: 800;
+  font-size: clamp(11px, 2cqw, 38px);
+  text-align: center;
+}
+.word-sentence .hl { color: #1fb21f; background: none; }
+.scene .choices {
+  width: 78%;
+  margin: .8cqw 0 auto;
+  gap: 1.2cqw 2cqw;
+}
+.scene .choice {
+  min-height: clamp(34px, 4.8cqw, 90px);
+  padding: 0 1cqw;
+  font-size: clamp(12px, 2cqw, 34px);
+  border-width: 3px;
+  border-radius: 999px;
+  box-shadow: 0 4px 0 var(--ink);
+}
+
+/* Portrait screens: a full-screen crop would cut the text off,
+   so show the whole board in the page flow instead. */
+@media (max-aspect-ratio: 1/1) {
+  body.highlight { overflow: auto; }
+  .scene {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+  }
+}

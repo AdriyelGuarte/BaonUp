@@ -1,127 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaonUp</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;800&display=swap"  rel="stylesheet">
-    <link rel="stylesheet" href="css/homepage.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaonUp · Mabuhay!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/landing.css">
 </head>
-<body>
+<body class="landing">
 
-    <div class="container">
+  <main class="welcome">
 
-        <div class="header">
+    <!-- Mascot holding the flag -->
+    <span class="mascot" data-src="assets/images/landing-mascot.jpg" data-fallback="Mascot"></span>
 
-            <!-- BaonUp, Barya, Grade lvl-->
+    <section class="welcome-card">
+      <h1>Mabuhay!</h1>
+      <p class="sub">Maligayang pagdating sa <strong>BaonUp</strong>!</p>
 
-            <div class="webname">
+      <label class="field-label" for="nickname">Nickname:</label>
+      <input id="nickname" class="nickname-input" type="text" maxlength="12"
+             autocomplete="off" placeholder="Ano ang pangalan mo?">
 
-                <h1>BaonUp</h1>
-                
-            </div>
+      <p class="field-label">Grade</p>
+      <div class="grade-row" role="group" aria-label="Piliin ang grade">
+        <button class="grade-pill" type="button" data-grade="1">Grade 1</button>
+        <button class="grade-pill" type="button" data-grade="2">Grade 2</button>
+        <button class="grade-pill" type="button" data-grade="3">Grade 3</button>
+      </div>
 
-            <div class="header-right">
-                
-                <div class="currency">
-                    <h3>Barya</h3>
-                </div>
+      <p class="hint" id="hint" aria-live="polite"></p>
+      <button class="btn btn-green start" id="start" type="button" disabled>Simulan!</button>
+    </section>
+  </main>
 
-                <div class="level">
-                    <h3>Grade 1</h3>
-                </div>
-
-            </div>
-            
-            
-
-        </div>
-
-        <div class="main">
-            <div class="card-container">
-
-                <a class="card card-reading" id="reading" style="grid-area: box-1"> 
-                    <div>
-
-                        <h1>Reading</h1>
-                        <h2> Description </h2>
-                        <div class="sub-card" id="sub-card1">
-                            
-                        </div>
-                    
-                    </div>
-                </a>
-
-                <a class="card card-math" id="math" style="grid-area: box-2"> 
-                    <div>
-                    
-                        <h1>Math</h1>
-                        <h2> Description </h2>
-                        <div class="sub-card" id="sub-card2">
-                        
-                        </div>
-
-                    </div>
-                </a>
-
-                <a class="card card-profile" id="profile" style="grid-area: box-3"> 
-                    
-                        <div class="profile-info">
-                            <h1> My Profile </h1>
-                            <h2> Kobie </h2>
-                        </div>
-                        
-                        
-                        <div class="pf-circle" id="sub-card3">
-                            <img src="assets/images/profilepic.jpg">
-                        </div>
-
-                    
-                </a>
-
-                <a class="card card-store" id="store" style="grid-area: box-4"> 
-                    <div>
-                        <div class="card-description">
-                            <h1>Sari-Sari Store</h1>
-                            <h2> Description </h2>
-                        </div>
-                        
-                        <div class="sub-card" id="sub-card4">
-                            
-                        </div>
-
-                    </div>
-                </a>
-
-                <a class="card card-event" id="event" style="grid-area: box-5"> 
-                    <div>
-                        <div class="card-description">
-                            <h1>Parol Festival</h1>
-                            <h2> Description </h2>
-                        </div>
-                        
-                        <div class="sub-card" id="sub-card5">
-                            
-                        </div>
-                        
-                    </div>
-                </a>
-            </div>
-            
-        </div>
-
-        <div class="footer">
-            <h3>
-                "Ang hindi marunong magmahal sa sariling wika ay higit pa sa hayop at malansang isda" - Dr. Jose Rizal
-            </h3>
-        </div>
-    </div>
-
-
-    
-
+  <script src="js/data/items.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/festival.js"></script>
+  <script src="js/rewards.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/landing.js"></script>
 </body>
 </html>
-
