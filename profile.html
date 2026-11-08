@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaonUp · Ang Profile Ko</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body class="profile-page">
+
+  <div class="bg-scene bg-bamboo" aria-hidden="true"></div>
+
+  <!--HEADER-->
+  <header class="p-top">
+    <a class="btn btn-small back" href="home.html">← Balik</a>
+    <h1 class="p-title">Ang Profile Ko</h1>
+    <div class="barya-pill">
+      <span class="coin" data-src="assets/images/barya.png" data-fallback="₱"></span>
+      <strong class="barya-count">0</strong>
+    </div>
+  </header>
+
+  <main class="p-wrap">
+
+  <!-- left side -->
+    <section class="panel id-card">
+      <div class="avatar-wrap"><div id="avatar"></div></div>
+
+      <div class="nick-row" id="nick-view">
+        <span class="nickname" id="nick-text"></span>
+        <button class="btn btn-small" id="btn-edit" type="button" aria-label="Palitan ang nickname">✏️</button>
+      </div>
+<!-- clicekd rename -->
+      <div class="nick-row hidden" id="nick-edit">
+        <input class="nick-input" id="nick-input" type="text" maxlength="12" autocomplete="off">
+        <button class="btn btn-small btn-green" id="btn-save" type="button">Save</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong id="stat-barya">0</strong><span>Barya</span></div>
+        <div class="stat"><strong id="stat-stars">0</strong><span>Bituin</span></div>
+        <div class="stat"><strong id="stat-rounds">0</strong><span>Naglaro</span></div>
+      </div>
+
+      <div class="grade-change">
+        <span>Grade:</span>
+        <button class="gpill" data-grade="1" type="button">1</button>
+        <button class="gpill" data-grade="2" type="button">2</button>
+        <button class="gpill" data-grade="3" type="button">3</button>
+      </div>
+    </section>
+
+    <!-- right side -->
+    <div class="p-right">
+
+      <section class="panel">
+        <h2>Mga Badge</h2>
+        <div class="badges" id="badges"></div> <!-- check js -->
+        <p class="note">Maglaro at bumili para ma-unlock ang iba pa!</p>
+      </section>
+
+      <section class="panel">
+        <h2>Aking Mga Gamit</h2> 
+        <div class="closet" id="closet"></div> <!-- check js -->
+        <p class="note">I-tap para isuot. I-tap ulit para tanggalin.</p>
+      </section>
+
+      <button class="reset-link" id="btn-reset" type="button">I-reset ang progress</button>
+    </div>
+  </main>
+
+  <!--reset-->
+  <div class="modal" id="reset" role="dialog" aria-labelledby="reset-title">
+    <div class="modal-card">
+      <h2 id="reset-title">Burahin lahat?</h2>
+      <p>Mawawala ang Barya, mga gamit, badge, at nickname mo.</p>
+      <div class="modal-actions">
+        <button class="btn btn-green" data-close type="button">Hindi</button>
+        <button class="btn" id="reset-yes" type="button">Oo, i-reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data/items.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/festival.js"></script>
+  <script src="js/rewards.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

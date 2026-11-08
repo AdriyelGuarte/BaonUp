@@ -1,0 +1,167 @@
+/* =========================================================
+   shop.css — Sari-Sari Store
+   Left: Aling Nena + speech bubble. Right: "Mga Paninda" 3×3 shelf.
+   ========================================================= */
+
+body.shop-page { min-height: 100vh; padding-bottom: 40px; }
+
+/* ---------- HEADER ---------- */
+.shop-top {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+  padding: 16px 18px 8px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.back { justify-self: start; }
+.shop-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, .85);
+}
+.shop-top .barya-pill { justify-self: end; }
+
+/* ---------- LAYOUT ---------- */
+.shop {
+  width: min(1000px, 100%);
+  margin: 10px auto 0;
+  padding: 0 18px;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 1.15fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* ---------- ALING NENA ---------- */
+.vendor { position: relative; min-height: 420px; }
+
+.nena {
+  width: min(270px, 62%);
+  height: 400px;
+  filter: drop-shadow(0 6px 0 rgba(59, 42, 74, .18));
+}
+.nena.fallback {                 /* placeholder box until the real picture is added */
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  text-align: center;
+  background: rgba(255, 255, 255, .7);
+  border: 4px dashed var(--ink);
+  border-radius: 28px;
+}
+
+.speech {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  width: min(210px, 46%);
+  padding: 14px 16px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  text-align: center;
+  background: var(--white);
+  border: 4px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 0 4px 0 rgba(59, 42, 74, .3);
+}
+.speech::before {                /* tail pointing at Aling Nena */
+  content: "";
+  position: absolute;
+  left: -22px;
+  bottom: 14px;
+  border: 10px solid transparent;
+  border-right: 16px solid var(--ink);
+}
+.speech::after {
+  content: "";
+  position: absolute;
+  left: -14px;
+  bottom: 16px;
+  border: 8px solid transparent;
+  border-right: 12px solid var(--white);
+}
+
+/* ---------- SHELF PANEL ---------- */
+.shelf-panel {
+  padding: 18px 20px 22px;
+  background: rgba(255, 255, 255, .9);
+  border: 4px solid var(--ink);
+  border-radius: 26px;
+  box-shadow: 0 6px 0 rgba(59, 42, 74, .35);
+}
+.shelf-panel h2 { margin-bottom: 14px; font-size: 1.5rem; font-weight: 800; }
+
+.items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+/* ---------- ONE ITEM ---------- */
+.item {
+  min-height: 150px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--ink);
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: 0 5px 0 rgba(59, 42, 74, .35);
+  transition: transform .12s ease;
+}
+.item:hover { transform: translateY(-3px); }
+.item:active { transform: translateY(2px); }
+
+.item-art { width: 62px; height: 62px; font-size: 2.6rem; line-height: 1; }
+.item-name { font-family: var(--font-display); font-weight: 800; font-size: .95rem; line-height: 1.05; text-align: center; }
+
+.price {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 12px 1px 3px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: .95rem;
+  background: #ffd84d;
+  border: 2px solid #d62d2d;
+  border-radius: 999px;
+}
+.price .coin { width: 22px; height: 22px; font-size: 1rem; }
+.price.text { padding: 1px 12px; }
+
+/* item states */
+.item.cant { opacity: .7; }
+.item.owned { background: #e8f7e4; }
+.item.owned .price { background: #b9e8b0; border-color: #3bb54a; }
+.item.claimed { background: #f1f1f1; }
+.item.claimed .price { background: #ddd; border-color: #999; }
+.item.festival { background: #fff1c7; border-color: #d62d2d; }
+.item.festival .item-art { filter: drop-shadow(0 0 6px #ffd84d); }
+.item.festival.gone { filter: grayscale(.85); opacity: .85; }
+
+/* ---------- BUY CONFIRM ---------- */
+.confirm-item { display: grid; place-items: center; width: 90px; height: 90px; margin: 0 auto 8px; font-size: 3.4rem; }
+
+/* ---------- SMALL SCREENS ---------- */
+@media (max-width: 820px) {
+  .shop { grid-template-columns: 1fr; }
+  .vendor { min-height: 300px; }
+  .nena { width: 190px; height: 290px; }
+  .speech { top: 40px; right: 6px; width: min(210px, 52%); }
+  .shop-title { font-size: 1.7rem; }
+}
+@media (max-width: 480px) {
+  .items { gap: 10px; }
+  .item { min-height: 136px; }
+  .item-art { width: 50px; height: 50px; font-size: 2.1rem; }
+  .shop-top { grid-template-columns: auto 1fr auto; gap: 8px; }
+  .shop-title { font-size: 1.3rem; }
+}

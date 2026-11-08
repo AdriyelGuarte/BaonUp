@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaonUp · Sari-Sari Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/shop.css">
+</head>
+<body class="shop-page">
+
+  <!-- Blurred cartoon sari-sari store (assets/images/store-bg.png) -->
+  <div class="bg-scene bg-store"></div>
+
+  <!--  HEADER  -->
+  <header class="shop-top">
+    <a class="btn btn-small back" href="home.html">← Balik</a>
+    <h1 class="shop-title">Sari-Sari Store</h1>
+    <div class="barya-pill">
+      <span class="coin" data-src="assets/images/barya.png" data-fallback="₱"></span>
+      <strong class="barya-count">0</strong>
+    </div>
+  </header>
+
+  <main class="shop">
+
+    <!-- Aling Nena + speech bubble  -->
+    <section class="vendor">
+      <div class="nena" data-src="assets/images/aling-nena.png" data-fallback="Aling Nena"></div>
+      <div class="speech" id="speech">Bili na kayo!</div>
+    </section>
+
+    <!--  Shelf  -->
+    <section class="shelf-panel">
+      <h2>Mga Paninda</h2>
+      <div class="items" id="items"></div>  <!--  items  -->
+    </section>
+
+  </main>
+
+  <!-- ============ BUY CONFIRM ============ -->
+  <div class="modal" id="confirm" role="dialog">
+    <div class="modal-card">
+      <h2 id="confirm-title">Bibilhin mo ba?</h2>
+      <div class="confirm-item" id="confirm-art"></div>
+      <p id="confirm-text"></p>
+      <div class="modal-actions">
+        <button class="btn btn-green" id="confirm-yes" type="button">Oo, bilhin!</button>
+        <button class="btn" data-close type="button">Hindi muna</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data/items.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/festival.js"></script>
+  <script src="js/rewards.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

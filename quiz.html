@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaonUp · Laro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body class="quiz">
+
+  <!-- Blurred cartoon bamboo forest (assets/images/bamboo-bg.png) -->
+  <div class="bg-scene bg-bamboo"></div>
+
+  <!--  TOP BAR X · progress · 1/10 · Barya  -->
+  <header class="q-top">
+    <button class="q-close" id="btn-close" type="button">X</button>
+    <div class="q-progress" role="progressbar">
+      <div class="q-fill" id="fill"></div>
+    </div>
+    <span class="q-counter" id="counter">1/10</span>
+    <div class="barya-pill">
+      <span class="coin" data-src="assets/images/barya.png" data-fallback="₱"></span>
+      <strong class="barya-count">0</strong>
+    </div>
+  </header>
+
+  <!--  QUESTION / RESULTS  -->
+  <main class="q-stage" id="stage"></main>
+
+  <!--  FEEDBACK + CHECK BAR  -->
+  <footer class="q-footer" id="footer">
+    <div class="footer-inner">
+      <div class="feedback" id="feedback">Piliin ang tamang sagot.</div>
+      <button class="btn check" id="check" type="button" disabled>Check</button>
+    </div>
+  </footer>
+
+  <!--  QUIT CONFIRM  -->
+  <div class="modal" id="quit" role="dialog">
+    <div class="modal-card">
+      <h2 id="quit-title">Aalis ka na? ;o;</h2>
+      <p>Hindi mawawala ang Barya na nakuha mo na.</p>
+      <div class="modal-actions">
+        <button class="btn btn-green" data-close type="button">Magpatuloy</button>
+        <a class="btn" href="home.html">Umalis</a>
+      </div>
+    </div>
+  </div>
+
+  <!--  GINTONG PAROL UNLOCKED  -->
+  <div class="modal" id="golden" role="dialog" >
+    <div class="modal-card">
+      <h2 id="golden-title">Kumpleto na ang ! 🏮</h2>
+      <p>Nakuha mo ang <strong>Gintong Parol</strong>! Maligayang Pasko hehe! Isuot ito sa Profile.</p>
+      <div class="modal-actions">
+        <button class="btn btn-green" data-close type="button">Yehey!</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data/items.js"></script>
+  <script src="js/data/questions.js"></script>
+  <script src="js/data/math.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/festival.js"></script>
+  <script src="js/rewards.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
