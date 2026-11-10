@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fil">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BaonUp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/homepage.css">
 </head>
@@ -14,7 +14,7 @@
 
     <div class="container">
 
-        <!--HEADER-->
+        <!-- HEADER -->
         <header class="header">
             <div class="header-inner">
 
@@ -38,92 +38,136 @@
 
         <p class="greeting" id="greeting">Kumusta! Ano'ng lalaruin natin ngayon?</p>
 
-    
-        <main class="main">
-            <div class="card-container">
+        <!-- PAGE: left widget | lunchbox | right widget -->
+        <div class="page">
 
-                <!-- READING -->
-                <a class="card card-reading" id="reading" href="quiz.html?subject=reading" style="grid-area: box-1">
-                    <h1>Reading</h1>
-                    <h2>Basa at salita</h2>
+            <!-- LEFT SIDE: Tarsier greeting -->
+            <aside class="side">
+                <div class="widget widget-tarsier">
 
-                    <div class="sub-card" id="sub-card1" aria-hidden="true">
-                        <div class="mini-row">
-                            <span class="mini-teacher" data-src="assets/images/tarsier.png" data-fallback="Ts"></span>
-                            <span class="mini-bubble">Anong oras ka umalis?</span>
+                    <div class="speech-bubble">
+                        <h3 id="tarsier-greeting">Magandang araw!</h3>
+                        <p>Handa ka na bang magbasa?</p>
+                    </div>
+
+                    <img src="assets/images/tarsier.png" alt="Tarsier">
+
+                </div>
+            </aside>
+
+            <!-- LUNCHBOX -->
+            <main class="main">
+                <div class="card-container">
+
+                    <!-- READING -->
+                    <a class="card card-reading" id="reading" href="quiz.html?subject=reading" style="grid-area: box-1">
+                        <h1>Reading</h1>
+                        <h2>Basa at salita</h2>
+
+                        <div class="sub-card" id="sub-card1" aria-hidden="true">
+                            <div class="mini-row">
+                                <span class="mini-teacher" data-src="assets/images/tarsier.png" data-fallback="Ts"></span>
+                                <span class="mini-bubble">Anong oras ka umalis?</span>
+                            </div>
+                            <div class="mini-row mini-row-me">
+                                <span class="mini-bubble mini-bubble-me">Umalis ako ng <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+                            </div>
                         </div>
-                        <div class="mini-row mini-row-me">
-                            <span class="mini-bubble mini-bubble-me">Umalis ako ng <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+
+                        <span class="play">Laro ▶</span>
+                    </a>
+
+                    <!-- MATH -->
+                    <a class="card card-math" id="math" href="quiz.html?subject=math" style="grid-area: box-2">
+                        <h1>Math</h1>
+                        <h2>Bilang at numero</h2>
+
+                        <div class="sub-card" id="sub-card2" aria-hidden="true">
+                            <span class="sum">3 + 4 = <span class="sum-blank">?</span></span>
                         </div>
+
+                        <span class="play">Laro ▶</span>
+                    </a>
+
+                    <!-- PROFILE -->
+                    <a class="card card-profile" id="profile" href="profile.html" style="grid-area: box-3">
+                        <div class="profile-info">
+                            <h1>My Profile</h1>
+                            <h2 id="home-nickname">—</h2>
+                        </div>
+
+                        <div class="pf-circle" id="sub-card3">
+                            <div id="home-avatar"></div>
+                        </div>
+                    </a>
+
+                    <!-- SARI-SARI STORE -->
+                    <a class="card card-store" id="store" href="shop.html" style="grid-area: box-4">
+                        <div class="card-description">
+                            <h1>Sari-Sari Store</h1>
+                            <h2>Bumili ng gamit</h2>
+                        </div>
+
+                        <div class="sub-card" id="sub-card4" aria-hidden="true">
+                            <span class="shelf-item" data-src="assets/images/items/salakot.png" data-fallback="👒"></span>
+                            <span class="shelf-item" data-src="assets/images/items/barong.png" data-fallback="👔"></span>
+                            <span class="shelf-item" data-src="assets/images/items/parol.png" data-fallback="🏵️"></span>
+                        </div>
+                    </a>
+
+                    <!-- PAROL FESTIVAL -->
+                    <a class="card card-event" id="event" href="#festival" style="grid-area: box-5">
+                        <div class="card-description">
+                            <span class="event-tag" id="event-tag">LIMITED TIME</span>
+                            <h1>Parol Festival</h1>
+                            <h2 id="event-text">—</h2>
+                        </div>
+
+                        <div class="sub-card" id="sub-card5">
+                            <div class="pieces" id="pieces" aria-hidden="true"></div>
+                            <small id="pieces-label"></small>
+                        </div>
+                    </a>
+
+                </div>
+            </main>
+
+            <!-- RIGHT SIDE: Salita ng Araw -->
+            <aside class="side">
+                <div class="widget widget-word">
+
+                    <h2>Salita ng Araw</h2>
+
+                    <div class="word-box">
+                        <h1 id="word">Salita</h1>
+                        <h3 id="word-meaning">Word</h3>
                     </div>
 
-                    <span class="play">Laro ▶</span>
-                </a>
+                    <p id="word-sentence">Basahin natin!</p>
 
-                <!-- MATH -->
-                <a class="card card-math" id="math" href="quiz.html?subject=math" style="grid-area: box-2">
-                    <h1>Math</h1>
-                    <h2>Bilang at numero</h2>
+                </div>
+            </aside>
 
-                    <div class="sub-card" id="sub-card2" aria-hidden="true">
-                        <span class="sum">3 + 4 = <span class="sum-blank">?</span></span>
-                    </div>
+        </div>
 
-                    <span class="play">Laro ▶</span>
-                </a>
-
-                <!-- PROFILE -->
-                <a class="card card-profile" id="profile" href="profile.html" style="grid-area: box-3">
-                    <div class="profile-info">
-                        <h1>My Profile</h1>
-                        <h2 id="home-nickname">—</h2>
-                    </div>
-
-                    <div class="pf-circle" id="sub-card3">
-                        <div id="home-avatar"></div>
-                    </div>
-                </a>
-
-                <!-- SARI-SARI STORE -->
-                <a class="card card-store" id="store" href="shop.html" style="grid-area: box-4">
-                    <div class="card-description">
-                        <h1>Sari-Sari Store</h1>
-                        <h2>Bumili ng gamit</h2>
-                    </div>
-
-                    <div class="sub-card" id="sub-card4" aria-hidden="true">
-                        <span class="shelf-item" data-src="assets/images/items/salakot.png" data-fallback="👒"></span>
-                        <span class="shelf-item" data-src="assets/images/items/barong.png" data-fallback="👔"></span>
-                        <span class="shelf-item" data-src="assets/images/items/parol.png" data-fallback="🏵️"></span>
-                    </div>
-                </a>
-
-                <!-- PAROL FESTIVAL -->
-                <a class="card card-event" id="event" href="#festival" style="grid-area: box-5">
-                    <div class="card-description">
-                        <span class="event-tag" id="event-tag">LIMITED TIME</span>
-                        <h1>Parol Festival</h1>
-                        <h2 id="event-text">—</h2>
-                    </div>
-
-                    <div class="sub-card" id="sub-card5">
-                        <div class="pieces" id="pieces" aria-hidden="true"></div>
-                        <small id="pieces-label"></small>
-                    </div>
-                </a>
-
-            </div>
-        </main>
-
+        <!-- FOOTER -->
         <footer class="footer">
-            <h3>
-                "Ang hindi marunong magmahal sa sariling wika ay higit pa sa hayop at malansang isda" - Dr. Jose Rizal
-            </h3>
+
+            <img src="assets/images/children.jpg" alt="Masayang mga batang Pilipino" id="footer-img">
+
+            <div class="footer-text">
+                <h3>
+                    "Ang hindi marunong magmahal sa sariling wika ay higit pa sa hayop at malansang isda"
+                </h3>
+                <p>- Dr. Jose Rizal</p>
+            </div>
+
         </footer>
     </div>
 
+
     <!-- GRADE PICKER -->
-    <div class="modal" id="level" role="dialog">
+    <div class="modal" id="level" role="dialog" aria-modal="true" aria-labelledby="level-title">
         <div class="modal-card">
             <button class="modal-close" data-close aria-label="Isara">✕</button>
             <h2 id="level-title">Anong grade mo na?</h2>
@@ -136,8 +180,8 @@
         </div>
     </div>
 
-    <!-- PAROL FESTIVAL INFO  -->
-    <div class="modal" id="festival" role="dialog">
+    <!-- PAROL FESTIVAL INFO -->
+    <div class="modal" id="festival" role="dialog" aria-modal="true" aria-labelledby="festival-title">
         <div class="modal-card">
             <button class="modal-close" data-close aria-label="Isara">✕</button>
             <h2 id="festival-title">Parol Festival</h2>
