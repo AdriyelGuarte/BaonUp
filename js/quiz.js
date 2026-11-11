@@ -17,9 +17,26 @@
 
   /* ---------- Setup ---------- */
   const params = new URLSearchParams(location.search);
-  const subject = params.get("subject") === "math" ? "math" : "reading";
+  const sp = params.get("subject");
+  const subject = sp === "math" ? "math" : sp === "highlight" ? "highlight" : "reading";
   const grade = State.get().grade;
-  const bank = (subject === "math" ? MATH_QUESTIONS : READING_QUESTIONS)[grade] || [];
+
+  function tagged(list, kind) {
+    return (list || []).map((q) => Object.assign({}, q, { kind: kind }));
+  }
+
+  // reading = random mix of chat-style and highlight questions (5 + 5)
+  function buildBank() {
+    if (subject === "math") return tagged(MATH_QUESTIONS[grade], "chat");
+    if (subject === "highlight") return shuffle(tagged(HIGHLIGHT_QUESTIONS[grade], "highlight"));
+
+    const chat = shuffle(tagged(READING_QUESTIONS[grade], "chat"));
+    const high = shuffle(tagged(HIGHLIGHT_QUESTIONS[grade], "highlight"));
+    const mix = chat.slice(0, 5).concat(high.slice(0, 5));
+    const spare = chat.slice(5).concat(high.slice(5));       // fill if one bank is short
+    return shuffle(mix.concat(shuffle(spare).slice(0, 10 - mix.length)));
+  }
+  const bank = buildBank();
 
   const TYPE_LABELS = {
     word: "SALITA", grammar: "BALARILA", meaning: "KAHULUGAN",    // reading
@@ -74,40 +91,22 @@
     if (text !== undefined) el.textContent = text;
     return el;
   }
+  function setBlank(text) {
+    const blank = UI.$("#blank");
+    if (!blank) return;
+    blank.textContent = text;
+    blank.classList.toggle("filled", Boolean(text));
+  }
 
   /* ---------- 1. Draw a question ---------- */
-  function render() {
+    function render() {
     const q = questions[S.index];
     stage.textContent = "";
 
     UI.$("#counter").textContent = (S.index + 1) + "/" + questions.length;
     UI.$("#fill").style.width = (S.index / questions.length * 100) + "%";
 
-    stage.appendChild(make("span", "q-tag", TYPE_LABELS[q.type] || "TANONG"));
-
-    // chat: teacher on the left ...
-    const chat = make("div", "chat");
-    const teacherRow = make("div", "msg msg-teacher");
-    const avatar = make("div", "teacher");
-    avatar.style.background = q.teacher.color;
-    avatar.title = q.teacher.name;
-    UI.hydrate(avatar, q.teacher.img, q.teacher.letter);
-    teacherRow.appendChild(avatar);
-    teacherRow.appendChild(make("div", "bubble bubble-teacher", q.msg));
-    chat.appendChild(teacherRow);
-
-    // ... the child's reply on the right, with the blank
-    const meRow = make("div", "msg msg-me");
-    const meBubble = make("div", "bubble bubble-me");
-    meBubble.appendChild(document.createTextNode(q.before + " "));
-    meBubble.appendChild(make("span", "blank"));
-    if (q.after) meBubble.appendChild(document.createTextNode(" " + q.after));
-    meBubble.querySelector(".blank").id = "blank";
-    meRow.appendChild(meBubble);
-    chat.appendChild(meRow);
-    stage.appendChild(chat);
-
-    // four choices
+   
     const choices = make("div", "choices");
     q.choices.forEach((text, i) => {
       const btn = make("button", "choice", text);
@@ -116,9 +115,54 @@
       btn.addEventListener("click", () => selectChoice(i));
       choices.appendChild(btn);
     });
-    stage.appendChild(choices);
 
-    // reset the bottom bar
+    const hl = q.kind === "highlight";
+    document.body.classList.toggle("highlight", hl);
+    UI.$(".bg-scene").className = "bg-scene " + (hl ? "bg-jungle" : "bg-bamboo");
+
+    if (hl) {
+      const scene = make("section", "scene");
+      const content = make("div", "scene-content");
+
+      content.appendChild(make("div", "bubble bubble-teacher",
+        "Ano ang kahulugan ng salitang naka-highlight?"));
+      content.appendChild(make("h2", "word-big", q.word.toUpperCase()));
+
+      const sentence = make("p", "word-sentence");
+      sentence.appendChild(document.createTextNode(q.before + " "));
+      sentence.appendChild(make("mark", "hl", q.word));
+      if (q.after) sentence.appendChild(document.createTextNode(" " + q.after));
+      content.appendChild(sentence);
+
+      content.appendChild(choices);
+      scene.appendChild(content);
+      stage.appendChild(scene);
+    } else {
+      stage.appendChild(make("span", "q-tag", TYPE_LABELS[q.type] || "TANONG"));
+
+      const chat = make("div", "chat");
+      const teacherRow = make("div", "msg msg-teacher");
+      const avatar = make("div", "teacher");
+      avatar.style.background = q.teacher.color;
+      avatar.title = q.teacher.name;
+      UI.hydrate(avatar, q.teacher.img, q.teacher.letter);
+      teacherRow.appendChild(avatar);
+      teacherRow.appendChild(make("div", "bubble bubble-teacher", q.msg));
+      chat.appendChild(teacherRow);
+
+      const meRow = make("div", "msg msg-me");
+      const meBubble = make("div", "bubble bubble-me");
+      meBubble.appendChild(document.createTextNode(q.before + " "));
+      meBubble.appendChild(make("span", "blank"));
+      if (q.after) meBubble.appendChild(document.createTextNode(" " + q.after));
+      meBubble.querySelector(".blank").id = "blank";
+      meRow.appendChild(meBubble);
+      chat.appendChild(meRow);
+      stage.appendChild(chat);
+
+      stage.appendChild(choices);
+    }
+
     footer.className = "q-footer";
     feedback.textContent = "Piliin ang tamang sagot.";
     setCheck("Check", false);
@@ -134,9 +178,7 @@
     buttons.forEach((b) => b.classList.remove("selected"));
     buttons[i].classList.add("selected");
 
-    const blank = UI.$("#blank");
-    blank.textContent = questions[S.index].choices[i];
-    blank.classList.add("filled");
+    setBlank(questions[S.index].choices[i]);
 
     setCheck("Check", true);
   }
@@ -199,8 +241,7 @@
       // first miss: one more try
       S.attempts = 1;
       S.selected = null;
-      UI.$("#blank").textContent = "";
-      UI.$("#blank").classList.remove("filled");
+      setBlank("");
       showFeedback("try", "Subukan ulit!", "Pumili ulit ng sagot.");
       setCheck("Check", false);
       return;
@@ -213,9 +254,7 @@
       b.disabled = true;
       if (b.textContent === q.correct) b.classList.add("correct");
     });
-    const blank = UI.$("#blank");
-    blank.textContent = q.correct;
-    blank.classList.add("filled");
+    setBlank(q.correct);
     showFeedback("bad", "Hindi tama.", "Ang tamang sagot ay: " + q.correct);
     setCheck(isLast() ? "Tingnan ang resulta" : "Next", true, "next");
   }
@@ -266,6 +305,8 @@
     UI.$("#fill").style.width = "100%";
     UI.$("#counter").textContent = total + "/" + total;
     footer.classList.add("hidden");
+    document.body.classList.remove("highlight");
+    UI.$(".bg-scene").className = "bg-scene bg-bamboo";
     stage.textContent = "";
 
     const card = make("section", "results");

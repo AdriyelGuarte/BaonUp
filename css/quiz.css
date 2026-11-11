@@ -228,3 +228,92 @@ body.quiz {
   .check { min-width: 120px; padding: 10px 18px; }
   .feedback .title { font-size: 1.3rem; }
 }
+
+/* ---------- Highlight game (full screen) ---------- */
+.bg-jungle { background: #0a1a12; }
+body.highlight { overflow: hidden; }
+body.highlight .q-top {
+  position: relative;
+  z-index: 5;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: rgba(10, 26, 18, .55);
+  border-radius: 999px;
+}
+body.highlight .q-counter { color: #fff; text-shadow: none; }
+body.highlight .q-close { color: #fff; }
+
+/* The board is as big as "cover" would make the image: it fills
+   the screen and the overflow is cropped. Text is positioned in %
+   of the board, so it stays on the cream area at any screen size. */
+.scene {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: max(100vw, calc(100vh * 1.415));
+  aspect-ratio: 2000 / 1413;
+  transform: translate(-50%, -50%);
+  background: url("../assets/images/board.png") center / 100% 100% no-repeat;
+  container-type: inline-size;
+  z-index: 0;
+}
+.scene-content {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 24%;
+  bottom: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1cqw;
+}
+.scene .bubble {
+  align-self: flex-start;
+  margin-left: 21%;
+  max-width: 58%;
+  padding: .8cqw 1.6cqw;
+  font-size: clamp(11px, 1.7cqw, 30px);
+  background: #ffc20e;
+  border-width: 2px;
+  box-shadow: none;
+}
+.word-big {
+  margin-top: auto;
+  font-size: clamp(24px, 5.2cqw, 96px);
+  letter-spacing: .2cqw;
+  line-height: 1;
+  color: #1fb21f;
+}
+.word-sentence {
+  font-weight: 800;
+  font-size: clamp(11px, 2cqw, 38px);
+  text-align: center;
+}
+.word-sentence .hl { color: #1fb21f; background: none; }
+.scene .choices {
+  width: 78%;
+  margin: .8cqw 0 auto;
+  gap: 1.2cqw 2cqw;
+}
+.scene .choice {
+  min-height: clamp(34px, 4.8cqw, 90px);
+  padding: 0 1cqw;
+  font-size: clamp(12px, 2cqw, 34px);
+  border-width: 3px;
+  border-radius: 999px;
+  box-shadow: 0 4px 0 var(--ink);
+}
+
+/* Portrait screens: a full-screen crop would cut the text off,
+   so show the whole board in the page flow instead. */
+@media (max-aspect-ratio: 1/1) {
+  body.highlight { overflow: auto; }
+  .scene {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+  }
+}

@@ -76,4 +76,30 @@
     event.preventDefault();
     UI.openModal("festival");
   });
+
+  /* ---------- Side widgets ---------- */
+
+  // Tarsier: greeting by time of day
+  const hour = new Date().getHours();
+  const hello =
+    hour < 12 ? "Magandang umaga!" :
+    hour < 18 ? "Magandang hapon!" :
+                "Magandang gabi!";
+  UI.$("#tarsier-greeting").textContent = hello;
+
+  // Salita ng Araw: one word per day, same all day
+  const WORDS = [
+    { word: "Bahay",    meaning: "House",     sentence: "Malaki ang bahay namin." },
+    { word: "Aklat",    meaning: "Book",      sentence: "Binasa ko ang aklat kagabi." },
+    { word: "Kaibigan", meaning: "Friend",    sentence: "Mabait ang kaibigan ko." },
+    { word: "Masaya",   meaning: "Happy",     sentence: "Masaya akong maglaro." },
+    { word: "Paaralan", meaning: "School",    sentence: "Pumunta kami sa paaralan." },
+    { word: "Pagkain",  meaning: "Food",      sentence: "Masarap ang pagkain ni Nanay." },
+    { word: "Araw",     meaning: "Sun / Day", sentence: "Maliwanag ang araw ngayon." },
+  ];
+  const dayNumber = Math.floor(new Date().setHours(0, 0, 0, 0) / 86400000);
+  const pick = WORDS[dayNumber % WORDS.length];
+  UI.$("#word").textContent = pick.word;
+  UI.$("#word-meaning").textContent = pick.meaning;
+  UI.$("#word-sentence").textContent = pick.sentence;
 })();
