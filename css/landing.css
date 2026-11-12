@@ -1,6 +1,4 @@
-/* =========================================================
-   landing.css — "Mabuhay!" welcome card (nickname + grade)
-   ========================================================= */
+/*  landing.css — "Mabuhay!" welcome card (nickname + grade) */
 
 body.landing {
   min-height: 100vh;
@@ -20,7 +18,7 @@ body.landing {
   margin-top: 90px;
 }
 
-/* ---------- Mascot ---------- */
+/*  Mascot  */
 .mascot {
   position: absolute;
   top: -110px;
@@ -40,7 +38,7 @@ body.landing {
   font-weight: 800;
 }
 
-/* ---------- Card ---------- */
+/*  Card  */
 .welcome-card {
   background: #fbf3c8;
   border: 5px solid var(--ink);
@@ -87,7 +85,7 @@ body.landing {
 .nickname-input::placeholder { color: #b6a98a; }
 .nickname-input:focus { outline: none; border-color: #ff9f1c; }
 
-/* ---------- Grade pills ---------- */
+/*  Grade pills  */
 .grade-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -115,7 +113,7 @@ body.landing {
 
 .start { display: flex; margin: 0 auto; padding: 12px 54px; font-size: 1.5rem; }
 
-/* ---------- Small screens ---------- */
+/*  Small screens  */
 @media (max-width: 520px) {
   .welcome { margin-top: 120px; }
   .mascot { left: 50%; transform: translateX(-50%); top: -128px; width: 120px; height: 150px; }

@@ -1,12 +1,8 @@
-/* =========================================================
-   profile.css — "Ang Profile Ko"
-   Left: ID card (avatar, nickname, stats, grade).
-   Right: badges + closet (equip the items you bought).
-   ========================================================= */
+/* profile.css — "Ang Profile Ko" */
 
 body.profile-page { min-height: 100vh; padding-bottom: 40px; }
 
-/* ---------- HEADER ---------- */
+/*  HEADER  */
 .p-top {
   width: min(900px, 100%);
   margin: 0 auto;
@@ -20,7 +16,7 @@ body.profile-page { min-height: 100vh; padding-bottom: 40px; }
 .p-title { font-size: 2.2rem; font-weight: 800; text-align: center; text-shadow: 0 2px 0 rgba(255, 255, 255, .85); }
 .p-top .barya-pill { justify-self: end; }
 
-/* ---------- LAYOUT ---------- */
+/*  LAYOUT  */
 .p-wrap {
   width: min(900px, 100%);
   margin: 14px auto 0;
@@ -42,7 +38,7 @@ body.profile-page { min-height: 100vh; padding-bottom: 40px; }
 .panel h2 { margin-bottom: 12px; font-size: 1.45rem; font-weight: 800; }
 .note { margin-top: 12px; font-size: .88rem; opacity: .75; }
 
-/* ---------- ID CARD ---------- */
+/*  ID CARD  */
 .id-card { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 
 .avatar-wrap { padding: 26px 0 10px; }
@@ -89,7 +85,7 @@ body.profile-page { min-height: 100vh; padding-bottom: 40px; }
 }
 .gpill[aria-pressed="true"] { background: var(--green); color: var(--white); }
 
-/* ---------- BADGES ---------- */
+/*  BADGES  */
 .badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .badge {
   padding: 10px 6px;
@@ -109,7 +105,7 @@ body.profile-page { min-height: 100vh; padding-bottom: 40px; }
 .badge.locked { color: #6f6a7c; background: #e6e4ea; border-color: #7c7787; box-shadow: 0 4px 0 #b8b4c0; }
 .badge.locked .icon { filter: grayscale(1) opacity(.55); }
 
-/* ---------- CLOSET ---------- */
+/*  CLOSET  */
 .closet { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .thing {
   min-height: 96px;
@@ -134,7 +130,7 @@ button.thing:hover { transform: translateY(-2px); }
 .thing.equipped { background: #e1f7dc; outline: 4px solid #3bb54a; outline-offset: -8px; }
 .thing.empty { opacity: .4; box-shadow: none; border-style: dashed; }
 
-/* ---------- RESET LINK ---------- */
+/*  RESET LINK  */
 .reset-link {
   justify-self: end;
   padding: 4px 10px;
@@ -148,7 +144,7 @@ button.thing:hover { transform: translateY(-2px); }
 }
 .reset-link:hover { opacity: 1; }
 
-/* ---------- SMALL SCREENS ---------- */
+/*  SMALL SCREENS  */
 @media (max-width: 760px) {
   .p-wrap { grid-template-columns: 1fr; }
   .p-title { font-size: 1.5rem; }

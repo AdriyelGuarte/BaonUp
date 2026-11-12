@@ -1,8 +1,4 @@
-/* =========================================================
-   quiz.css — the conversational quiz screen
-   (teacher bubble left · child's bubble with blank right ·
-    4 choices · Check bar at the bottom)
-   ========================================================= */
+/*   quiz.css — the conversational quiz screen  */
 
 body.quiz {
   min-height: 100vh;
@@ -11,7 +7,7 @@ body.quiz {
   padding-bottom: 150px;           /* space for the fixed Check bar */
 }
 
-/* ---------- TOP BAR ---------- */
+/*  TOP BAR  */
 .q-top {
   width: min(780px, 100%);
   margin: 0 auto;
@@ -53,7 +49,7 @@ body.quiz {
   text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
 }
 
-/* ---------- STAGE ---------- */
+/*  STAGE  */
 .q-stage {
   width: min(780px, 100%);
   margin: 22px auto 0;
@@ -122,7 +118,7 @@ body.quiz {
 }
 .blank.filled { background: rgba(255, 255, 255, .55); border-radius: 8px 8px 0 0; }
 
-/* ---------- CHOICES (2 × 2) ---------- */
+/*  CHOICES (2 × 2)  */
 .choices {
   width: min(580px, 100%);
   margin: 6px auto 0;
@@ -154,7 +150,7 @@ body.quiz {
 .choice:disabled { cursor: default; }
 .choice.wrong:disabled { opacity: .75; }
 
-/* ---------- FOOTER / CHECK BAR ---------- */
+/*  FOOTER / CHECK BAR  */
 .q-footer {
   position: fixed;
   left: 0;
@@ -192,7 +188,7 @@ body.quiz {
 .check.ready { background: var(--green); color: var(--white); text-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
 .check.next { background: #4aa9ff; color: var(--white); text-shadow: 0 2px 0 rgba(0, 0, 0, .25); }
 
-/* ---------- RESULTS ---------- */
+/*  RESULTS  */
 .results {
   align-self: center;
   width: min(520px, 100%);
@@ -217,7 +213,7 @@ body.quiz {
 .results .festival-note { padding: 4px 14px; font-weight: 800; background: #ffe3a1; border-radius: 999px; }
 .results .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 6px; }
 
-/* ---------- SMALL SCREENS ---------- */
+/*  SMALL SCREENS  */
 @media (max-width: 560px) {
   .teacher { width: 60px; height: 60px; font-size: 1.2rem; }
   .bubble { font-size: 1.05rem; padding: 10px 14px; max-width: 78%; }
@@ -229,7 +225,7 @@ body.quiz {
   .feedback .title { font-size: 1.3rem; }
 }
 
-/* ---------- Highlight game (full screen) ---------- */
+/*  Highlight game (full screen)  */
 .bg-jungle { background: #0a1a12; }
 body.highlight { overflow: hidden; }
 body.highlight .q-top {

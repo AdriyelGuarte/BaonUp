@@ -1,12 +1,4 @@
-/* =========================================================
-   homepage.css — the lunchbox (kept from the team's design,
-   cleaned up and made friendlier for kids)
-
-   Layout map (grid-template-areas):
-        box-1  box-2  box-2      Reading | Math
-        box-1  box-3  box-4      Reading | Profile | Store
-        box-5  box-5  box-5      Parol Festival
-   ========================================================= */
+/* homepage.css — the lunchbox  */
 
 body.home {
   background:
@@ -21,7 +13,7 @@ body.home {
   padding-bottom: 28px;
 }
 
-/* ---------- HEADER ---------- */
+/*  HEADER  */
 .header {
   width: 100%;
   background: rgba(248, 113, 2, 0.16);
@@ -67,7 +59,7 @@ body.home {
   font-size: 1.4rem;
 }
 
-/* ---------- THE LUNCHBOX ---------- */
+/*  THE LUNCHBOX  */
 .main {
   position: relative;
   width: min(980px, calc(100% - 32px));
@@ -107,7 +99,7 @@ body.home {
   border: 4px inset rgb(255, 176, 56);
 }
 
-/* ---------- CARDS (the compartments) ---------- */
+/*  CARDS (the compartments)  */
 .card {
   display: flex;
   flex-direction: column;
@@ -160,7 +152,7 @@ body.home {
   border-radius: 999px;
 }
 
-/* ---------- SUB-CARDS (little previews inside each card) ---------- */
+/*  SUB-CARDS (little previews inside each card)  */
 .sub-card {
   width: 100%;
   max-width: 240px;
@@ -258,7 +250,7 @@ body.home {
 .card-event.ended { background: #9b8f93; }
 .card-event.ended .event-tag { color: #ffffff; background: #6e6266; }
 
-/* ---------- SIDE WIDGETS ---------- */
+/*  SIDE WIDGETS  */
 .page {
   display: flex;
   justify-content: center;
@@ -372,7 +364,7 @@ body.home {
   }
 }
  
-/* ---------- FOOTER ---------- */
+/*  FOOTER  */
 .footer {
   display: flex;
   flex-wrap: wrap;
@@ -413,7 +405,7 @@ body.home {
  
 
 
-/* ---------- GRADE PICKER (modal) ---------- */
+/*  GRADE PICKER (modal)  */
 .grade-buttons { display: flex; gap: 12px; margin-top: 16px; }
 .grade-big {
   flex: 1;
@@ -433,7 +425,7 @@ body.home {
 .grade-big.g3 { background: var(--pink); }
 .grade-big.current { outline: 5px solid var(--ink); outline-offset: 2px; }
 
-/* ---------- RESPONSIVE ---------- */
+/*  RESPONSIVE  */
 @media (max-width: 800px) {
   .card-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));

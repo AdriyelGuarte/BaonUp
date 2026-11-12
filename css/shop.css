@@ -1,11 +1,9 @@
-/* =========================================================
-   shop.css — Sari-Sari Store
-   Left: Aling Nena + speech bubble. Right: "Mga Paninda" 3×3 shelf.
-   ========================================================= */
+
+ /*  shop.css — Sari-Sari Store */
 
 body.shop-page { min-height: 100vh; padding-bottom: 40px; }
 
-/* ---------- HEADER ---------- */
+/*  HEADER  */
 .shop-top {
   width: min(1000px, 100%);
   margin: 0 auto;
@@ -24,7 +22,7 @@ body.shop-page { min-height: 100vh; padding-bottom: 40px; }
 }
 .shop-top .barya-pill { justify-self: end; }
 
-/* ---------- LAYOUT ---------- */
+/*  LAYOUT  */
 .shop {
   width: min(1000px, 100%);
   margin: 10px auto 0;
@@ -35,15 +33,15 @@ body.shop-page { min-height: 100vh; padding-bottom: 40px; }
   align-items: start;
 }
 
-/* ---------- ALING NENA ---------- */
+/*  ALING NENA  */
 .vendor { position: relative; min-height: 420px; }
 
 .nena {
-  width: min(270px, 62%);
-  height: 400px;
+  width: min(500px, 100%);
+  height: 350px;
   filter: drop-shadow(0 6px 0 rgba(59, 42, 74, .18));
 }
-.nena.fallback {                 /* placeholder box until the real picture is added */
+.nena.fallback {                 /* placeholder box */
   display: grid;
   place-items: center;
   font-family: var(--font-display);
@@ -57,8 +55,8 @@ body.shop-page { min-height: 100vh; padding-bottom: 40px; }
 
 .speech {
   position: absolute;
-  top: 70px;
-  right: 0;
+  top: 90px;
+  right: -40px;
   width: min(210px, 46%);
   padding: 14px 16px;
   font-family: var(--font-display);
@@ -88,7 +86,7 @@ body.shop-page { min-height: 100vh; padding-bottom: 40px; }
   border-right: 12px solid var(--white);
 }
 
-/* ---------- SHELF PANEL ---------- */
+/*  SHELF PANEL  */
 .shelf-panel {
   padding: 18px 20px 22px;
   background: rgba(255, 255, 255, .9);
@@ -100,7 +98,7 @@ body.shop-page { min-height: 100vh; padding-bottom: 40px; }
 
 .items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
-/* ---------- ONE ITEM ---------- */
+/*  ONE ITEM  */
 .item {
   min-height: 150px;
   padding: 10px 6px;
@@ -147,10 +145,10 @@ body.shop-page { min-height: 100vh; padding-bottom: 40px; }
 .item.festival .item-art { filter: drop-shadow(0 0 6px #ffd84d); }
 .item.festival.gone { filter: grayscale(.85); opacity: .85; }
 
-/* ---------- BUY CONFIRM ---------- */
+/*  BUY CONFIRM  */
 .confirm-item { display: grid; place-items: center; width: 90px; height: 90px; margin: 0 auto 8px; font-size: 3.4rem; }
 
-/* ---------- SMALL SCREENS ---------- */
+/*  SMALL SCREENS  */
 @media (max-width: 820px) {
   .shop { grid-template-columns: 1fr; }
   .vendor { min-height: 300px; }
